@@ -71,6 +71,16 @@
         </ul>
       </div>
       <div class="p-8">
+        <div class="" *ngIf="!!author">
+          <div class="">
+            <MiniPost
+              *ngFor="let ppa of posts; trackBy: postTrackBy"
+              [ppa]="ppa"
+              [hideProfile]="true"
+              (deleteEmitter)="removeFromId(ppa.postPreview.id)"
+            />
+          </div>
+        </div>
         <!-- <MiniPostGroup>
           <MiniPost />
           <MiniPost />
