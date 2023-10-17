@@ -133,6 +133,8 @@ export class ContentEditorComponent implements OnDestroy, OnChanges {
   private renderFirstValidContent(changes:SimpleChanges){
     const content = changes['content'];
 
+    console.log(content);
+
     const isPreviousValid = !!content.previousValue && content.previousValue?.length !== 0;
     const isCurrentValid = !!content.currentValue && content.currentValue?.length !== 0;
 
@@ -141,7 +143,10 @@ export class ContentEditorComponent implements OnDestroy, OnChanges {
     console.debug("isCurrentValid : ", isCurrentValid);
 
     if (!isPreviousValid && isCurrentValid){
-      this.tryRender();
+      const blocks:unknown[] = JSON.parse(content.currentValue).blocks
+      console.log(blocks.length);
+      if (blocks.length > 0 )
+        this.tryRender();
     }
   }
 }
