@@ -1,7 +1,7 @@
 <article class="flex justify-between items-center gap-4 md:gap-8 mt-4">
   <div class="grow grid grid-cols-1 gap-3">
     <div class="flex justify-between items-center">
-      <PostOwner [author]="ppa.author" />
+      <PostOwner *ngIf="!hideProfile; else title" [author]="ppa.author" />
       <OptionsMenu
         *ngIf="isOwned"
         [postId]="ppa.postPreview.id"
@@ -10,9 +10,7 @@
     </div>
     <a role="link" [routerLink]="['/post', ppa.postPreview.id]">
       <div class="group line-clamp-3 hover:cursor-pointer">
-        <h3 class="text-xl font-bold mb-2 group-hover:underline">
-          {{ ppa.postPreview.title }}
-        </h3>
+        <div class="" *ngIf="hideProfile; else title"></div>
         <p>
           {{ ppa.postPreview.description }}
         </p>
@@ -34,3 +32,12 @@
     </div>
   </div>
 </article>
+
+
+<ng-template #title>
+  <a role="link" [routerLink]="['/post', ppa.postPreview.id]">
+    <h3 class="text-xl font-bold mb-2 group-hover:underline">
+      {{ ppa.postPreview.title }}
+    </h3>
+  </a>
+</ng-template>

@@ -11,6 +11,7 @@ import { TagService } from 'src/app/core/services/tag.service';
 export class MiniPostComponent implements OnInit {
   @Input() ppa!: PostPreviewAndAuthor;
   @Output() deleteEmitter = new EventEmitter();
+  @Input() hideProfile: boolean = false;
   isOwned = false;
 
   constructor(private authService: AuthorityService, private tagService: TagService) {}
