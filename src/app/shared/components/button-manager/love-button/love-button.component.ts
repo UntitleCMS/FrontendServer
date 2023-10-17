@@ -14,14 +14,12 @@ export class LoveButtonComponent {
   constructor(private postService: PostService) {}
 
   love() {
-    this.isLoved = true;
     this.inclementCount();
     this.postService.likePost(this.postId)
       .subscribe({error:this.declementCount});
   }
 
   unlove() {
-    this.isLoved = false;
     this.declementCount();
     this.postService.unlikePost(this.postId)
       .subscribe({error:this.inclementCount});
@@ -35,6 +33,12 @@ export class LoveButtonComponent {
     }
   }
 
-  private inclementCount = () =>  this.loveCount++
-  private declementCount = () =>  this.loveCount--
+  private inclementCount = () => {
+    this.isLoved = true;
+    this.loveCount++
+  }
+  private declementCount = () => {
+    this.isLoved = false;
+    this.loveCount--
+  }
 }
