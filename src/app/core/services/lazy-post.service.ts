@@ -16,11 +16,12 @@ export class LazyPostService {
   }
 
   loadMore(
+    author?: string,
     callback: () => void = () => {},
     zeroLengthHandler: () => void = () => {}
   ) {
     this.postService
-      .getAllPosts(20, this.pivot$.value)
+      .getAllPosts(20, this.pivot$.value, author)
       .pipe(
         tap((posts) => {
           if (posts.length > 0) {

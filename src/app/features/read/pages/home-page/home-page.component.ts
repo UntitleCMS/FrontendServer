@@ -64,6 +64,7 @@ export class HomePageComponent {
     setTimeout(
       () =>
         this.lazyPostService.loadMore(
+          undefined,
           () => (this.readyStatus = true),
           () => (this.endLoad = true)
         ),

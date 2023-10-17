@@ -14,11 +14,14 @@ export class PostRepositoryService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts(size: number = 20, pivot: string | null = null) {
+  getPosts(size: number = 20, pivot: string | null = null, author?: string) {
     let endpoint = new URL(this.#POST_ENDPOINT);
     endpoint.searchParams.set('take', size.toString());
     if (pivot) {
       endpoint.searchParams.set('from', '>' + pivot);
+    }
+    if (author) {
+      endpoint.searchParams.set('of', author);
     }
 
     return this.http.get<Response<Pageable<PostPreview[]>>>(

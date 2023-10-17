@@ -17,8 +17,8 @@ export class PostService {
     private userService: UserService
   ) {}
 
-  getAllPosts(size: number, pivot: string | null) {
-    return this.postRepo.getPosts(size, pivot).pipe(
+  getAllPosts(size: number, pivot: string | null, author?: string) {
+    return this.postRepo.getPosts(size, pivot, author).pipe(
       switchMap((response) => {
         const postPreviews = response.data?.collections || [];
         const authorIds = postPreviews.map(
