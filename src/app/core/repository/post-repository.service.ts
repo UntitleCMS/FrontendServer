@@ -5,12 +5,13 @@ import { Pageable } from '../models/pageable';
 import { Post, PostPreview } from '../models/post-response';
 import { PostAddDto, PostUpdateDto } from '../models/post-request';
 import { map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostRepositoryService {
-  #BASE_URL = new URL('http://localhost:4200');
+  #BASE_URL = environment.baseUrl;
   #POST_ENDPOINT = new URL('/api/article/v1/articles', this.#BASE_URL);
 
   constructor(private http: HttpClient) {}

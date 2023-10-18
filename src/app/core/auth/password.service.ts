@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
 import { Token } from '../models/token';
 import { tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PasswordService {
-  private readonly baseUrl = new URL('http://localhost:4200');
+  private readonly baseUrl = environment.baseUrl;
   private readonly tokenEndpoint = new URL('/api/auth/v1/token', this.baseUrl);
   private readonly registerEndpoint = new URL(
     '/api/auth/v1/register',

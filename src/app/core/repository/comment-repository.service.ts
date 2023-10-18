@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Comment, CommentRequest } from '../models/comment';
 import { map, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommentRepositoryService {
-  #BASE_URL = new URL('http://localhost:4200');
+  #BASE_URL = environment.baseUrl;
   #COMMENT_ENDPOINT = new URL('/api/comment/v1/comments', this.#BASE_URL);
 
   constructor(private http: HttpClient) {}

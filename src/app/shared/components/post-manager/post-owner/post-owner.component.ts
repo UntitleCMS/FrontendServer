@@ -17,7 +17,7 @@ export class PostOwnerComponent {
 
   imageSource = () => {
     if (this.author.avatar && this.author.avatar.length)
-      return '/api/img/v1/' + this.author.avatar;
+      return '/api/img/v1' + this.author.avatar;
     return 'assets/images/default-avatar.svg';
   };
 }

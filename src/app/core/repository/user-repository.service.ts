@@ -1,13 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserRepositoryService {
 
-  #BASE_URL = new URL('http://localhost:4200');
+  #BASE_URL = environment.baseUrl;
   #USER_ENDPOINT = new URL('/api/auth/v1/profiles', this.#BASE_URL);
 
   constructor(private http: HttpClient) { }

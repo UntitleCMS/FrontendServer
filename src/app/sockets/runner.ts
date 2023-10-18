@@ -1,5 +1,6 @@
 import { BehaviorSubject, Subject, filter } from "rxjs";
 import { io, Socket } from "socket.io-client";
+import { environment } from "src/environments/environment";
 
 type SUPPORTED_LANGUAGES =
   | 'java17'
@@ -42,7 +43,7 @@ export class Runner {
   private _error = new Subject<string>();
 
   private constructor(){
-    Runner.io = io("http://localhost:4200/", {
+    Runner.io = io(environment.baseUrl.toString(), {
       path: "/api/runner/v1/socket.io",
       autoConnect: false
     });

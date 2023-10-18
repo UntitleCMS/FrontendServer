@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, isDevMode } from '@angular/core';
 import { AuthorityService } from './core/auth/authority.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,11 @@ export class AppComponent implements OnInit {
     this.breakpointObserver.observe('(min-width: 768px)').subscribe((state) => {
       this.isLargeScreen = state.matches;
     });
+    if (isDevMode()) {
+      console.log('Development!');
+    } else {
+      console.log('Production!');
+    }
   }
 
   @HostListener('window:scroll', ['$event'])
