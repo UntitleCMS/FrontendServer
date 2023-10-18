@@ -6,8 +6,12 @@
     "start": "ng serve",
     "start:proxy": "ng serve --proxy-config proxy.config.json",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+
+    "build:docker": "docker build -t villsource/beta-blog .",
+    "deploy:docker": "npm run build:docker && docker push villsource/beta-blog"
   },
   "private": true,
   "dependencies": {
