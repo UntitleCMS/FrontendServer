@@ -59,6 +59,10 @@ export class CodePageComponent implements AfterViewInit, OnDestroy {
         {
           value: this.code.code,
           language: this.code.language,
+          automaticLayout: true,
+          minimap: {
+            enabled: window.innerWidth >= 1024,
+          }
         }
       );
 

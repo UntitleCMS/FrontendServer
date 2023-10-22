@@ -2,18 +2,18 @@
   class="fixed h-screen w-full top-0 left-0 bg-black/25 z-50 backdrop-blur p-4"
 >
   <div class="w-full bar-h bg-white rounded-t-xl flex justify-end">
-    <div class="gap-2 p-4 flex justify-start flex-auto">
-      <div class="p-2 flex justify-start">
+    <div class="gap-2 p-4 pe-1 sm:pe-4 flex justify-start flex-auto">
+      <div class="p-2 flex w-full overflow-clip justify-start">
         <img
           [src]="'assets/images/lang-logo/' + code.language + '.svg'"
           alt="code logo"
-          class="w-6 me-6"
+          class="w-6 me-1 sm:me-6"
         />
         <p>{{ code.language }}</p>
       </div>
-      <div class="p-2 flex-auto text-center">{{ code.name }}</div>
+      <div class="p-2 flex-auto text-center hidden  sm:block">{{ code.name }}</div>
     </div>
-    <div class="gap-2 p-4">
+    <div class="gap-2 p-4 ps-1 sm:ps-4 min-w-[152px]">
       <button
         *ngIf="
           serverStatus !== state.LOADING && executeStatus !== state.LOADING;
@@ -97,7 +97,7 @@
   <div
     class="w-full container-h bg-white rounded-b-xl grid grid-cols-1 md:grid-cols-2 relative overflow-hidden"
   >
-    <div class="h-full bg-white border-e relative">
+    <div class="hidden md:block h-full bg-white border-e relative">
       <div class="h-full" #codeEditor></div>
     </div>
 
